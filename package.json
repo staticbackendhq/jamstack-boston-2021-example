@@ -1,0 +1,33 @@
+{
+  "name": "jamstack-boston-2021-example",
+  "version": "1.0.0",
+  "description": "Code for the talk I gave at Jamstack Boston in Nov 2021 showcasing StaticBackend functionalities.",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server public/",
+    "build": "esbuild --bundle --sourcemap --outfile=public/js/watertable.js src/bootstrap.tsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staticbackendhq/jamstack-boston-2021-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/staticbackendhq/jamstack-boston-2021-example/issues"
+  },
+  "homepage": "https://github.com/staticbackendhq/jamstack-boston-2021-example#readme",
+  "dependencies": {
+    "@staticbackend/js": "^1.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "esbuild": "^0.13.13",
+    "http-server": "^14.0.0"
+  }
+}
