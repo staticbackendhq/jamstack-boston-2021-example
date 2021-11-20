@@ -272,14 +272,14 @@
           {
             Object.freeze(emptyObject);
           }
-          function Component4(props, context, updater) {
+          function Component5(props, context, updater) {
             this.props = props;
             this.context = context;
             this.refs = emptyObject;
             this.updater = updater || ReactNoopUpdateQueue;
           }
-          Component4.prototype.isReactComponent = {};
-          Component4.prototype.setState = function(partialState, callback) {
+          Component5.prototype.isReactComponent = {};
+          Component5.prototype.setState = function(partialState, callback) {
             if (!(typeof partialState === "object" || typeof partialState === "function" || partialState == null)) {
               {
                 throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
@@ -287,7 +287,7 @@
             }
             this.updater.enqueueSetState(this, partialState, callback, "setState");
           };
-          Component4.prototype.forceUpdate = function(callback) {
+          Component5.prototype.forceUpdate = function(callback) {
             this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
           };
           {
@@ -296,7 +296,7 @@
               replaceState: ["replaceState", "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."]
             };
             var defineDeprecationWarning = function(methodName, info) {
-              Object.defineProperty(Component4.prototype, methodName, {
+              Object.defineProperty(Component5.prototype, methodName, {
                 get: function() {
                   warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                   return void 0;
@@ -311,7 +311,7 @@
           }
           function ComponentDummy() {
           }
-          ComponentDummy.prototype = Component4.prototype;
+          ComponentDummy.prototype = Component5.prototype;
           function PureComponent(props, context, updater) {
             this.props = props;
             this.context = context;
@@ -320,7 +320,7 @@
           }
           var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
           pureComponentPrototype.constructor = PureComponent;
-          _assign(pureComponentPrototype, Component4.prototype);
+          _assign(pureComponentPrototype, Component5.prototype);
           pureComponentPrototype.isPureReactComponent = true;
           function createRef() {
             var refObject = {
@@ -1293,8 +1293,8 @@
               return describeNativeComponentFrame(fn, false);
             }
           }
-          function shouldConstruct(Component5) {
-            var prototype = Component5.prototype;
+          function shouldConstruct(Component6) {
+            var prototype = Component6.prototype;
             return !!(prototype && prototype.isReactComponent);
           }
           function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
@@ -1618,7 +1618,7 @@
             only: onlyChild
           };
           exports.Children = Children;
-          exports.Component = Component4;
+          exports.Component = Component5;
           exports.PureComponent = PureComponent;
           exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
           exports.cloneElement = cloneElement$1;
@@ -2447,11 +2447,11 @@
       if (true) {
         (function() {
           "use strict";
-          var React5 = require_react();
+          var React6 = require_react();
           var _assign = require_object_assign();
           var Scheduler = require_scheduler();
           var tracing = require_tracing();
-          var ReactSharedInternals = React5.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React6.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function warn(format) {
             {
               for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -2483,7 +2483,7 @@
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
-          if (!React5) {
+          if (!React6) {
             {
               throw Error("ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.");
             }
@@ -3220,8 +3220,8 @@
               return describeNativeComponentFrame(fn, false);
             }
           }
-          function shouldConstruct(Component4) {
-            var prototype = Component4.prototype;
+          function shouldConstruct(Component5) {
+            var prototype = Component5.prototype;
             return !!(prototype && prototype.isReactComponent);
           }
           function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
@@ -3699,7 +3699,7 @@
           var didWarnInvalidChild = false;
           function flattenChildren(children) {
             var content = "";
-            React5.Children.forEach(children, function(child) {
+            React6.Children.forEach(children, function(child) {
               if (child == null) {
                 return;
               }
@@ -3710,7 +3710,7 @@
           function validateProps(element, props) {
             {
               if (typeof props.children === "object" && props.children !== null) {
-                React5.Children.forEach(props.children, function(child) {
+                React6.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -9811,9 +9811,9 @@
           var contextStackCursor = createCursor(emptyContextObject);
           var didPerformWorkStackCursor = createCursor(false);
           var previousContext = emptyContextObject;
-          function getUnmaskedContext(workInProgress2, Component4, didPushOwnContextIfProvider) {
+          function getUnmaskedContext(workInProgress2, Component5, didPushOwnContextIfProvider) {
             {
-              if (didPushOwnContextIfProvider && isContextProvider(Component4)) {
+              if (didPushOwnContextIfProvider && isContextProvider(Component5)) {
                 return previousContext;
               }
               return contextStackCursor.current;
@@ -9958,8 +9958,8 @@
                   case HostRoot:
                     return node.stateNode.context;
                   case ClassComponent: {
-                    var Component4 = node.type;
-                    if (isContextProvider(Component4)) {
+                    var Component5 = node.type;
+                    if (isContextProvider(Component5)) {
                       return node.stateNode.__reactInternalMemoizedMergedChildContext;
                     }
                     break;
@@ -10371,10 +10371,10 @@
               pendingLegacyContextWarning = new Map();
             };
           }
-          function resolveDefaultProps(Component4, baseProps) {
-            if (Component4 && Component4.defaultProps) {
+          function resolveDefaultProps(Component5, baseProps) {
+            if (Component5 && Component5.defaultProps) {
               var props = _assign({}, baseProps);
-              var defaultProps = Component4.defaultProps;
+              var defaultProps = Component5.defaultProps;
               for (var propName in defaultProps) {
                 if (props[propName] === void 0) {
                   props[propName] = defaultProps[propName];
@@ -10903,7 +10903,7 @@
           }
           var fakeInternalInstance = {};
           var isArray = Array.isArray;
-          var emptyRefsObject = new React5.Component().refs;
+          var emptyRefsObject = new React6.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -12690,7 +12690,7 @@
             }
             return true;
           }
-          function renderWithHooks(current2, workInProgress2, Component4, props, secondArg, nextRenderLanes) {
+          function renderWithHooks(current2, workInProgress2, Component5, props, secondArg, nextRenderLanes) {
             renderLanes = nextRenderLanes;
             currentlyRenderingFiber$1 = workInProgress2;
             {
@@ -12710,7 +12710,7 @@
                 ReactCurrentDispatcher$1.current = HooksDispatcherOnMountInDEV;
               }
             }
-            var children = Component4(props, secondArg);
+            var children = Component5(props, secondArg);
             if (didScheduleRenderPhaseUpdateDuringThisPass) {
               var numberOfReRenders = 0;
               do {
@@ -12731,7 +12731,7 @@
                   hookTypesUpdateIndexDev = -1;
                 }
                 ReactCurrentDispatcher$1.current = HooksDispatcherOnRerenderInDEV;
-                children = Component4(props, secondArg);
+                children = Component5(props, secondArg);
               } while (didScheduleRenderPhaseUpdateDuringThisPass);
             }
             ReactCurrentDispatcher$1.current = ContextOnlyDispatcher;
@@ -14318,16 +14318,16 @@
             workInProgress2.child = reconcileChildFibers(workInProgress2, current2.child, null, renderLanes2);
             workInProgress2.child = reconcileChildFibers(workInProgress2, null, nextChildren, renderLanes2);
           }
-          function updateForwardRef(current2, workInProgress2, Component4, nextProps, renderLanes2) {
+          function updateForwardRef(current2, workInProgress2, Component5, nextProps, renderLanes2) {
             {
               if (workInProgress2.type !== workInProgress2.elementType) {
-                var innerPropTypes = Component4.propTypes;
+                var innerPropTypes = Component5.propTypes;
                 if (innerPropTypes) {
-                  checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component4));
+                  checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component5));
                 }
               }
             }
-            var render2 = Component4.render;
+            var render2 = Component5.render;
             var ref = workInProgress2.ref;
             var nextChildren;
             prepareToReadContext(workInProgress2, renderLanes2);
@@ -14353,10 +14353,10 @@
             reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2);
             return workInProgress2.child;
           }
-          function updateMemoComponent(current2, workInProgress2, Component4, nextProps, updateLanes, renderLanes2) {
+          function updateMemoComponent(current2, workInProgress2, Component5, nextProps, updateLanes, renderLanes2) {
             if (current2 === null) {
-              var type = Component4.type;
-              if (isSimpleFunctionComponent(type) && Component4.compare === null && Component4.defaultProps === void 0) {
+              var type = Component5.type;
+              if (isSimpleFunctionComponent(type) && Component5.compare === null && Component5.defaultProps === void 0) {
                 var resolvedType = type;
                 {
                   resolvedType = resolveFunctionForHotReloading(type);
@@ -14374,14 +14374,14 @@
                   checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(type));
                 }
               }
-              var child = createFiberFromTypeAndProps(Component4.type, null, nextProps, workInProgress2, workInProgress2.mode, renderLanes2);
+              var child = createFiberFromTypeAndProps(Component5.type, null, nextProps, workInProgress2, workInProgress2.mode, renderLanes2);
               child.ref = workInProgress2.ref;
               child.return = workInProgress2;
               workInProgress2.child = child;
               return child;
             }
             {
-              var _type = Component4.type;
+              var _type = Component5.type;
               var _innerPropTypes = _type.propTypes;
               if (_innerPropTypes) {
                 checkPropTypes(_innerPropTypes, nextProps, "prop", getComponentName(_type));
@@ -14390,7 +14390,7 @@
             var currentChild = current2.child;
             if (!includesSomeLane(updateLanes, renderLanes2)) {
               var prevProps = currentChild.memoizedProps;
-              var compare = Component4.compare;
+              var compare = Component5.compare;
               compare = compare !== null ? compare : shallowEqual;
               if (compare(prevProps, nextProps) && current2.ref === workInProgress2.ref) {
                 return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2);
@@ -14403,7 +14403,7 @@
             workInProgress2.child = newChild;
             return newChild;
           }
-          function updateSimpleMemoComponent(current2, workInProgress2, Component4, nextProps, updateLanes, renderLanes2) {
+          function updateSimpleMemoComponent(current2, workInProgress2, Component5, nextProps, updateLanes, renderLanes2) {
             {
               if (workInProgress2.type !== workInProgress2.elementType) {
                 var outerMemoType = workInProgress2.elementType;
@@ -14435,7 +14435,7 @@
                 }
               }
             }
-            return updateFunctionComponent(current2, workInProgress2, Component4, nextProps, renderLanes2);
+            return updateFunctionComponent(current2, workInProgress2, Component5, nextProps, renderLanes2);
           }
           function updateOffscreenComponent(current2, workInProgress2, renderLanes2) {
             var nextProps = workInProgress2.pendingProps;
@@ -14516,18 +14516,18 @@
               workInProgress2.flags |= Ref;
             }
           }
-          function updateFunctionComponent(current2, workInProgress2, Component4, nextProps, renderLanes2) {
+          function updateFunctionComponent(current2, workInProgress2, Component5, nextProps, renderLanes2) {
             {
               if (workInProgress2.type !== workInProgress2.elementType) {
-                var innerPropTypes = Component4.propTypes;
+                var innerPropTypes = Component5.propTypes;
                 if (innerPropTypes) {
-                  checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component4));
+                  checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component5));
                 }
               }
             }
             var context;
             {
-              var unmaskedContext = getUnmaskedContext(workInProgress2, Component4, true);
+              var unmaskedContext = getUnmaskedContext(workInProgress2, Component5, true);
               context = getMaskedContext(workInProgress2, unmaskedContext);
             }
             var nextChildren;
@@ -14535,11 +14535,11 @@
             {
               ReactCurrentOwner$1.current = workInProgress2;
               setIsRendering(true);
-              nextChildren = renderWithHooks(current2, workInProgress2, Component4, nextProps, context, renderLanes2);
+              nextChildren = renderWithHooks(current2, workInProgress2, Component5, nextProps, context, renderLanes2);
               if (workInProgress2.mode & StrictMode) {
                 disableLogs();
                 try {
-                  nextChildren = renderWithHooks(current2, workInProgress2, Component4, nextProps, context, renderLanes2);
+                  nextChildren = renderWithHooks(current2, workInProgress2, Component5, nextProps, context, renderLanes2);
                 } finally {
                   reenableLogs();
                 }
@@ -14554,17 +14554,17 @@
             reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2);
             return workInProgress2.child;
           }
-          function updateClassComponent(current2, workInProgress2, Component4, nextProps, renderLanes2) {
+          function updateClassComponent(current2, workInProgress2, Component5, nextProps, renderLanes2) {
             {
               if (workInProgress2.type !== workInProgress2.elementType) {
-                var innerPropTypes = Component4.propTypes;
+                var innerPropTypes = Component5.propTypes;
                 if (innerPropTypes) {
-                  checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component4));
+                  checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component5));
                 }
               }
             }
             var hasContext;
-            if (isContextProvider(Component4)) {
+            if (isContextProvider(Component5)) {
               hasContext = true;
               pushContextProvider(workInProgress2);
             } else {
@@ -14579,15 +14579,15 @@
                 workInProgress2.alternate = null;
                 workInProgress2.flags |= Placement;
               }
-              constructClassInstance(workInProgress2, Component4, nextProps);
-              mountClassInstance(workInProgress2, Component4, nextProps, renderLanes2);
+              constructClassInstance(workInProgress2, Component5, nextProps);
+              mountClassInstance(workInProgress2, Component5, nextProps, renderLanes2);
               shouldUpdate = true;
             } else if (current2 === null) {
-              shouldUpdate = resumeMountClassInstance(workInProgress2, Component4, nextProps, renderLanes2);
+              shouldUpdate = resumeMountClassInstance(workInProgress2, Component5, nextProps, renderLanes2);
             } else {
-              shouldUpdate = updateClassInstance(current2, workInProgress2, Component4, nextProps, renderLanes2);
+              shouldUpdate = updateClassInstance(current2, workInProgress2, Component5, nextProps, renderLanes2);
             }
-            var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component4, shouldUpdate, hasContext, renderLanes2);
+            var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component5, shouldUpdate, hasContext, renderLanes2);
             {
               var inst = workInProgress2.stateNode;
               if (shouldUpdate && inst.props !== nextProps) {
@@ -14599,19 +14599,19 @@
             }
             return nextUnitOfWork;
           }
-          function finishClassComponent(current2, workInProgress2, Component4, shouldUpdate, hasContext, renderLanes2) {
+          function finishClassComponent(current2, workInProgress2, Component5, shouldUpdate, hasContext, renderLanes2) {
             markRef(current2, workInProgress2);
             var didCaptureError = (workInProgress2.flags & DidCapture) !== NoFlags;
             if (!shouldUpdate && !didCaptureError) {
               if (hasContext) {
-                invalidateContextProvider(workInProgress2, Component4, false);
+                invalidateContextProvider(workInProgress2, Component5, false);
               }
               return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2);
             }
             var instance = workInProgress2.stateNode;
             ReactCurrentOwner$1.current = workInProgress2;
             var nextChildren;
-            if (didCaptureError && typeof Component4.getDerivedStateFromError !== "function") {
+            if (didCaptureError && typeof Component5.getDerivedStateFromError !== "function") {
               nextChildren = null;
               {
                 stopProfilerTimerIfRunning();
@@ -14639,7 +14639,7 @@
             }
             workInProgress2.memoizedState = instance.state;
             if (hasContext) {
-              invalidateContextProvider(workInProgress2, Component4, true);
+              invalidateContextProvider(workInProgress2, Component5, true);
             }
             return workInProgress2.child;
           }
@@ -14731,60 +14731,60 @@
             var lazyComponent = elementType;
             var payload = lazyComponent._payload;
             var init = lazyComponent._init;
-            var Component4 = init(payload);
-            workInProgress2.type = Component4;
-            var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component4);
-            var resolvedProps = resolveDefaultProps(Component4, props);
+            var Component5 = init(payload);
+            workInProgress2.type = Component5;
+            var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component5);
+            var resolvedProps = resolveDefaultProps(Component5, props);
             var child;
             switch (resolvedTag) {
               case FunctionComponent: {
                 {
-                  validateFunctionComponentInDev(workInProgress2, Component4);
-                  workInProgress2.type = Component4 = resolveFunctionForHotReloading(Component4);
+                  validateFunctionComponentInDev(workInProgress2, Component5);
+                  workInProgress2.type = Component5 = resolveFunctionForHotReloading(Component5);
                 }
-                child = updateFunctionComponent(null, workInProgress2, Component4, resolvedProps, renderLanes2);
+                child = updateFunctionComponent(null, workInProgress2, Component5, resolvedProps, renderLanes2);
                 return child;
               }
               case ClassComponent: {
                 {
-                  workInProgress2.type = Component4 = resolveClassForHotReloading(Component4);
+                  workInProgress2.type = Component5 = resolveClassForHotReloading(Component5);
                 }
-                child = updateClassComponent(null, workInProgress2, Component4, resolvedProps, renderLanes2);
+                child = updateClassComponent(null, workInProgress2, Component5, resolvedProps, renderLanes2);
                 return child;
               }
               case ForwardRef: {
                 {
-                  workInProgress2.type = Component4 = resolveForwardRefForHotReloading(Component4);
+                  workInProgress2.type = Component5 = resolveForwardRefForHotReloading(Component5);
                 }
-                child = updateForwardRef(null, workInProgress2, Component4, resolvedProps, renderLanes2);
+                child = updateForwardRef(null, workInProgress2, Component5, resolvedProps, renderLanes2);
                 return child;
               }
               case MemoComponent: {
                 {
                   if (workInProgress2.type !== workInProgress2.elementType) {
-                    var outerPropTypes = Component4.propTypes;
+                    var outerPropTypes = Component5.propTypes;
                     if (outerPropTypes) {
-                      checkPropTypes(outerPropTypes, resolvedProps, "prop", getComponentName(Component4));
+                      checkPropTypes(outerPropTypes, resolvedProps, "prop", getComponentName(Component5));
                     }
                   }
                 }
-                child = updateMemoComponent(null, workInProgress2, Component4, resolveDefaultProps(Component4.type, resolvedProps), updateLanes, renderLanes2);
+                child = updateMemoComponent(null, workInProgress2, Component5, resolveDefaultProps(Component5.type, resolvedProps), updateLanes, renderLanes2);
                 return child;
               }
             }
             var hint = "";
             {
-              if (Component4 !== null && typeof Component4 === "object" && Component4.$$typeof === REACT_LAZY_TYPE) {
+              if (Component5 !== null && typeof Component5 === "object" && Component5.$$typeof === REACT_LAZY_TYPE) {
                 hint = " Did you wrap a component in React.lazy() more than once?";
               }
             }
             {
               {
-                throw Error("Element type is invalid. Received a promise that resolves to: " + Component4 + ". Lazy element type must resolve to a class or function." + hint);
+                throw Error("Element type is invalid. Received a promise that resolves to: " + Component5 + ". Lazy element type must resolve to a class or function." + hint);
               }
             }
           }
-          function mountIncompleteClassComponent(_current, workInProgress2, Component4, nextProps, renderLanes2) {
+          function mountIncompleteClassComponent(_current, workInProgress2, Component5, nextProps, renderLanes2) {
             if (_current !== null) {
               _current.alternate = null;
               workInProgress2.alternate = null;
@@ -14792,18 +14792,18 @@
             }
             workInProgress2.tag = ClassComponent;
             var hasContext;
-            if (isContextProvider(Component4)) {
+            if (isContextProvider(Component5)) {
               hasContext = true;
               pushContextProvider(workInProgress2);
             } else {
               hasContext = false;
             }
             prepareToReadContext(workInProgress2, renderLanes2);
-            constructClassInstance(workInProgress2, Component4, nextProps);
-            mountClassInstance(workInProgress2, Component4, nextProps, renderLanes2);
-            return finishClassComponent(null, workInProgress2, Component4, true, hasContext, renderLanes2);
+            constructClassInstance(workInProgress2, Component5, nextProps);
+            mountClassInstance(workInProgress2, Component5, nextProps, renderLanes2);
+            return finishClassComponent(null, workInProgress2, Component5, true, hasContext, renderLanes2);
           }
-          function mountIndeterminateComponent(_current, workInProgress2, Component4, renderLanes2) {
+          function mountIndeterminateComponent(_current, workInProgress2, Component5, renderLanes2) {
             if (_current !== null) {
               _current.alternate = null;
               workInProgress2.alternate = null;
@@ -14812,14 +14812,14 @@
             var props = workInProgress2.pendingProps;
             var context;
             {
-              var unmaskedContext = getUnmaskedContext(workInProgress2, Component4, false);
+              var unmaskedContext = getUnmaskedContext(workInProgress2, Component5, false);
               context = getMaskedContext(workInProgress2, unmaskedContext);
             }
             prepareToReadContext(workInProgress2, renderLanes2);
             var value;
             {
-              if (Component4.prototype && typeof Component4.prototype.render === "function") {
-                var componentName = getComponentName(Component4) || "Unknown";
+              if (Component5.prototype && typeof Component5.prototype.render === "function") {
+                var componentName = getComponentName(Component5) || "Unknown";
                 if (!didWarnAboutBadClass[componentName]) {
                   error("The <%s /> component appears to have a render method, but doesn't extend React.Component. This is likely to cause errors. Change %s to extend React.Component instead.", componentName, componentName);
                   didWarnAboutBadClass[componentName] = true;
@@ -14830,13 +14830,13 @@
               }
               setIsRendering(true);
               ReactCurrentOwner$1.current = workInProgress2;
-              value = renderWithHooks(null, workInProgress2, Component4, props, context, renderLanes2);
+              value = renderWithHooks(null, workInProgress2, Component5, props, context, renderLanes2);
               setIsRendering(false);
             }
             workInProgress2.flags |= PerformedWork;
             {
               if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
-                var _componentName = getComponentName(Component4) || "Unknown";
+                var _componentName = getComponentName(Component5) || "Unknown";
                 if (!didWarnAboutModulePatternComponent[_componentName]) {
                   error("The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.", _componentName, _componentName, _componentName);
                   didWarnAboutModulePatternComponent[_componentName] = true;
@@ -14845,7 +14845,7 @@
             }
             if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
               {
-                var _componentName2 = getComponentName(Component4) || "Unknown";
+                var _componentName2 = getComponentName(Component5) || "Unknown";
                 if (!didWarnAboutModulePatternComponent[_componentName2]) {
                   error("The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.", _componentName2, _componentName2, _componentName2);
                   didWarnAboutModulePatternComponent[_componentName2] = true;
@@ -14855,7 +14855,7 @@
               workInProgress2.memoizedState = null;
               workInProgress2.updateQueue = null;
               var hasContext = false;
-              if (isContextProvider(Component4)) {
+              if (isContextProvider(Component5)) {
                 hasContext = true;
                 pushContextProvider(workInProgress2);
               } else {
@@ -14863,20 +14863,20 @@
               }
               workInProgress2.memoizedState = value.state !== null && value.state !== void 0 ? value.state : null;
               initializeUpdateQueue(workInProgress2);
-              var getDerivedStateFromProps = Component4.getDerivedStateFromProps;
+              var getDerivedStateFromProps = Component5.getDerivedStateFromProps;
               if (typeof getDerivedStateFromProps === "function") {
-                applyDerivedStateFromProps(workInProgress2, Component4, getDerivedStateFromProps, props);
+                applyDerivedStateFromProps(workInProgress2, Component5, getDerivedStateFromProps, props);
               }
               adoptClassInstance(workInProgress2, value);
-              mountClassInstance(workInProgress2, Component4, props, renderLanes2);
-              return finishClassComponent(null, workInProgress2, Component4, true, hasContext, renderLanes2);
+              mountClassInstance(workInProgress2, Component5, props, renderLanes2);
+              return finishClassComponent(null, workInProgress2, Component5, true, hasContext, renderLanes2);
             } else {
               workInProgress2.tag = FunctionComponent;
               {
                 if (workInProgress2.mode & StrictMode) {
                   disableLogs();
                   try {
-                    value = renderWithHooks(null, workInProgress2, Component4, props, context, renderLanes2);
+                    value = renderWithHooks(null, workInProgress2, Component5, props, context, renderLanes2);
                   } finally {
                     reenableLogs();
                   }
@@ -14884,16 +14884,16 @@
               }
               reconcileChildren(null, workInProgress2, value, renderLanes2);
               {
-                validateFunctionComponentInDev(workInProgress2, Component4);
+                validateFunctionComponentInDev(workInProgress2, Component5);
               }
               return workInProgress2.child;
             }
           }
-          function validateFunctionComponentInDev(workInProgress2, Component4) {
+          function validateFunctionComponentInDev(workInProgress2, Component5) {
             {
-              if (Component4) {
-                if (Component4.childContextTypes) {
-                  error("%s(...): childContextTypes cannot be defined on a function component.", Component4.displayName || Component4.name || "Component");
+              if (Component5) {
+                if (Component5.childContextTypes) {
+                  error("%s(...): childContextTypes cannot be defined on a function component.", Component5.displayName || Component5.name || "Component");
                 }
               }
               if (workInProgress2.ref !== null) {
@@ -14912,15 +14912,15 @@
                   error("Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s", info);
                 }
               }
-              if (typeof Component4.getDerivedStateFromProps === "function") {
-                var _componentName3 = getComponentName(Component4) || "Unknown";
+              if (typeof Component5.getDerivedStateFromProps === "function") {
+                var _componentName3 = getComponentName(Component5) || "Unknown";
                 if (!didWarnAboutGetDerivedStateOnFunctionComponent[_componentName3]) {
                   error("%s: Function components do not support getDerivedStateFromProps.", _componentName3);
                   didWarnAboutGetDerivedStateOnFunctionComponent[_componentName3] = true;
                 }
               }
-              if (typeof Component4.contextType === "object" && Component4.contextType !== null) {
-                var _componentName4 = getComponentName(Component4) || "Unknown";
+              if (typeof Component5.contextType === "object" && Component5.contextType !== null) {
+                var _componentName4 = getComponentName(Component5) || "Unknown";
                 if (!didWarnAboutContextTypeOnFunctionComponent[_componentName4]) {
                   error("%s: Function components do not support contextType.", _componentName4);
                   didWarnAboutContextTypeOnFunctionComponent[_componentName4] = true;
@@ -15529,8 +15529,8 @@
                     pushHostContext(workInProgress2);
                     break;
                   case ClassComponent: {
-                    var Component4 = workInProgress2.type;
-                    if (isContextProvider(Component4)) {
+                    var Component5 = workInProgress2.type;
+                    if (isContextProvider(Component5)) {
                       pushContextProvider(workInProgress2);
                     }
                     break;
@@ -15825,8 +15825,8 @@
               case MemoComponent:
                 return null;
               case ClassComponent: {
-                var Component4 = workInProgress2.type;
-                if (isContextProvider(Component4)) {
+                var Component5 = workInProgress2.type;
+                if (isContextProvider(Component5)) {
                   popContext(workInProgress2);
                 }
                 return null;
@@ -16108,8 +16108,8 @@
           function unwindWork(workInProgress2, renderLanes2) {
             switch (workInProgress2.tag) {
               case ClassComponent: {
-                var Component4 = workInProgress2.type;
-                if (isContextProvider(Component4)) {
+                var Component5 = workInProgress2.type;
+                if (isContextProvider(Component5)) {
                   popContext(workInProgress2);
                 }
                 var flags = workInProgress2.flags;
@@ -19275,18 +19275,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           var createFiber = function(tag, pendingProps, key, mode) {
             return new FiberNode(tag, pendingProps, key, mode);
           };
-          function shouldConstruct$1(Component4) {
-            var prototype = Component4.prototype;
+          function shouldConstruct$1(Component5) {
+            var prototype = Component5.prototype;
             return !!(prototype && prototype.isReactComponent);
           }
           function isSimpleFunctionComponent(type) {
             return typeof type === "function" && !shouldConstruct$1(type) && type.defaultProps === void 0;
           }
-          function resolveLazyComponentTag(Component4) {
-            if (typeof Component4 === "function") {
-              return shouldConstruct$1(Component4) ? ClassComponent : FunctionComponent;
-            } else if (Component4 !== void 0 && Component4 !== null) {
-              var $$typeof = Component4.$$typeof;
+          function resolveLazyComponentTag(Component5) {
+            if (typeof Component5 === "function") {
+              return shouldConstruct$1(Component5) ? ClassComponent : FunctionComponent;
+            } else if (Component5 !== void 0 && Component5 !== null) {
+              var $$typeof = Component5.$$typeof;
               if ($$typeof === REACT_FORWARD_REF_TYPE) {
                 return ForwardRef;
               }
@@ -19725,9 +19725,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             var fiber = get(parentComponent);
             var parentContext = findCurrentUnmaskedContext(fiber);
             if (fiber.tag === ClassComponent) {
-              var Component4 = fiber.type;
-              if (isContextProvider(Component4)) {
-                return processChildContext(fiber, Component4, parentContext);
+              var Component5 = fiber.type;
+              if (isContextProvider(Component5)) {
+                return processChildContext(fiber, Component5, parentContext);
               }
             }
             return parentContext;
@@ -20766,12 +20766,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/bootstrap.tsx
-  var import_react4 = __toModule(require_react());
+  var import_react5 = __toModule(require_react());
   var import_react_dom = __toModule(require_react_dom());
   var import_js = __toModule(require_dist());
 
   // src/app.tsx
-  var import_react3 = __toModule(require_react());
+  var import_react4 = __toModule(require_react());
 
   // src/auth.tsx
   var import_react = __toModule(require_react());
@@ -21044,23 +21044,229 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
   };
 
+  // src/tictactoe.tsx
+  var import_react3 = __toModule(require_react());
+  var TicTacToe = class extends import_react3.Component {
+    constructor(props) {
+      super(props);
+      this.repo = "rooms_774_";
+      this.componentDidMount = async () => {
+        const filters = [
+          ["waiting", "==", true]
+        ];
+        const res = await bkn.query(this.props.token, this.repo, filters);
+        if (!res.ok) {
+          alert(res.content);
+          return;
+        }
+        this.setState({ rooms: res.content.results });
+      };
+      this.handleCreateRoom = async () => {
+        this.setState({ roomOwner: true, waitingForJoin: false });
+        let newRoom = {
+          name: this.state.newRoom,
+          waiting: true
+        };
+        const res = await bkn.create(this.props.token, this.repo, newRoom);
+        if (!res.ok) {
+          alert(res.content);
+          return;
+        }
+        this.handleJoin(res.content);
+      };
+      this.tagRoom = async (id) => {
+        const update = { waiting: false };
+        const res = await bkn.update(this.props.token, this.repo, id, update);
+        if (!res.ok) {
+          alert(res.content);
+          return;
+        }
+      };
+      let game = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+      this.state = {
+        me: "",
+        rooms: [],
+        newRoom: "",
+        currentRoom: null,
+        roomOwner: false,
+        waitingForJoin: false,
+        myTurn: false,
+        game,
+        opponent: ""
+      };
+    }
+    handleChanges(field, e) {
+      let state = this.state;
+      state[field] = e.currentTarget?.value;
+      this.setState(state);
+    }
+    handleJoin(room) {
+      this.setState({ currentRoom: room });
+      bkn.connect(this.props.token, this.onAuth.bind(this), this.onMessage.bind(this));
+    }
+    onAuth(token) {
+      bkn.send(bkn.types.join, this.state.currentRoom.id);
+    }
+    onMessage(pl) {
+      if (pl.type == bkn.types.joined) {
+        if (!this.state.roomOwner && !this.state.opponent) {
+          const msg2 = { type: "name", value: this.state.me };
+          bkn.send(bkn.types.chanIn, JSON.stringify(msg2), this.state.currentRoom.id);
+        }
+        if (this.state.roomOwner) {
+          if (this.state.waitingForJoin) {
+            this.setState({ waitingForJoin: false });
+            this.tagRoom(this.state.currentRoom.id);
+          } else {
+            this.setState({ waitingForJoin: true });
+          }
+        }
+        const isOwnerNext = new Date().getTime() % 2 == 0;
+        const msg = { type: "player", owner: isOwnerNext };
+        bkn.send(bkn.types.chanIn, JSON.stringify(msg), this.state.currentRoom.id);
+      } else if (pl.type == bkn.types.chanOut) {
+        try {
+          const data = JSON.parse(pl.data);
+          this.process(data);
+        } catch (ex) {
+          alert(ex);
+        }
+      }
+    }
+    process(data) {
+      console.log(data);
+      if (data.type == "name") {
+        if (this.state.roomOwner && !this.state.waitingForJoin && !this.state.opponent) {
+          const msg = { type: "name", value: this.state.me };
+          bkn.send(bkn.types.chanIn, JSON.stringify(msg), this.state.currentRoom.id);
+          this.setState({ opponent: data.value });
+        } else if (!this.state.roomOwner) {
+          this.setState({ opponent: data.value });
+        }
+      } else if (data.type == "player") {
+        if (data.owner && this.state.roomOwner) {
+          this.setState({ myTurn: true });
+        } else if (!data.owner && !this.state.roomOwner) {
+          this.setState({ myTurn: true });
+        }
+      } else if (data.type == "play") {
+        let { game } = this.state;
+        game[data.pos] = data.symbol;
+        this.setState({ game });
+        const msg = { type: "player", owner: !data.owner };
+        bkn.send(bkn.types.chanIn, JSON.stringify(msg), this.state.currentRoom.id);
+      }
+    }
+    handleTurn(pos) {
+      if (!this.state.myTurn) {
+        alert("not your turn");
+        return;
+      } else if (this.state.game[pos] != " ") {
+        alert("cannot play there");
+        return;
+      }
+      this.setState({ myTurn: false });
+      const msg = {
+        type: "play",
+        pos,
+        symbol: this.state.roomOwner ? "x" : "o",
+        owner: this.state.roomOwner
+      };
+      bkn.send(bkn.types.chanIn, JSON.stringify(msg), this.state.currentRoom.id);
+    }
+    renderLobby() {
+      return /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("h1", null, "Pick or create a room to play"), /* @__PURE__ */ import_react3.default.createElement("h3", null, "Enter your name"), /* @__PURE__ */ import_react3.default.createElement("p", null, /* @__PURE__ */ import_react3.default.createElement("input", {
+        type: "text",
+        onChange: this.handleChanges.bind(this, "me"),
+        value: this.state.me
+      })), /* @__PURE__ */ import_react3.default.createElement("p", null, /* @__PURE__ */ import_react3.default.createElement("input", {
+        type: "text",
+        onChange: this.handleChanges.bind(this, "newRoom"),
+        value: this.state.newRoom
+      })), /* @__PURE__ */ import_react3.default.createElement("p", null, /* @__PURE__ */ import_react3.default.createElement("button", {
+        onClick: this.handleCreateRoom.bind(this)
+      }, "Create room")), /* @__PURE__ */ import_react3.default.createElement("h3", null, "Players waiting for a match"), this.state.rooms.map((r) => /* @__PURE__ */ import_react3.default.createElement("p", {
+        key: r.id
+      }, /* @__PURE__ */ import_react3.default.createElement("button", {
+        onClick: this.handleJoin.bind(this, r)
+      }, "Join: ", r.name))));
+    }
+    renderGame() {
+      let names = /* @__PURE__ */ import_react3.default.createElement("h2", null, "Wainting for opponent");
+      if (this.state.opponent) {
+        names = /* @__PURE__ */ import_react3.default.createElement("h2", null, this.state.me, " vs. ", this.state.opponent);
+      }
+      return /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("h1", null, "Room: ", this.state.currentRoom?.name), names, /* @__PURE__ */ import_react3.default.createElement("h3", null, this.state.myTurn ? "Your turn" : "Their turn"), /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p0",
+        onClick: this.handleTurn.bind(this, 0)
+      }, this.state.game[0]), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p1",
+        onClick: this.handleTurn.bind(this, 1)
+      }, this.state.game[1]), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p2",
+        onClick: this.handleTurn.bind(this, 2)
+      }, this.state.game[2])), /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p3",
+        onClick: this.handleTurn.bind(this, 3)
+      }, this.state.game[3]), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p4",
+        onClick: this.handleTurn.bind(this, 4)
+      }, this.state.game[4]), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p5",
+        onClick: this.handleTurn.bind(this, 5)
+      }, this.state.game[5])), /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p6",
+        onClick: this.handleTurn.bind(this, 6)
+      }, this.state.game[6]), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p7",
+        onClick: this.handleTurn.bind(this, 7)
+      }, this.state.game[7]), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "pos p8",
+        onClick: this.handleTurn.bind(this, 8)
+      }, this.state.game[8])));
+    }
+    render() {
+      if (this.state.currentRoom) {
+        return this.renderGame();
+      }
+      return this.renderLobby();
+    }
+  };
+
   // src/app.tsx
-  var App = class extends import_react3.Component {
+  var App = class extends import_react4.Component {
     constructor(props) {
       super(props);
       this.state = {
-        token: null
+        token: null,
+        currentView: "bases"
       };
     }
     authCompleted(token) {
       this.setState({ token });
     }
-    render() {
-      let view = /* @__PURE__ */ import_react3.default.createElement(Bases, {
+    handleMenuClick(menu) {
+      this.setState({ currentView: menu });
+    }
+    renderApp() {
+      let view = /* @__PURE__ */ import_react4.default.createElement(Bases, {
         token: this.state.token
       });
+      if (this.state.currentView == "tic") {
+        view = /* @__PURE__ */ import_react4.default.createElement(TicTacToe, {
+          token: this.state.token
+        });
+      }
+      return /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("a", {
+        onClick: this.handleMenuClick.bind(this, "bases")
+      }, "Bases"), /* @__PURE__ */ import_react4.default.createElement("a", {
+        onClick: this.handleMenuClick.bind(this, "tic")
+      }, "Tic Tac Toe")), view);
+    }
+    render() {
+      let view = this.renderApp();
       if (!this.state.token) {
-        view = /* @__PURE__ */ import_react3.default.createElement(Auth, {
+        view = /* @__PURE__ */ import_react4.default.createElement(Auth, {
           onToken: this.authCompleted.bind(this)
         });
       }
@@ -21070,7 +21276,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/bootstrap.tsx
   bkn = new import_js.Backend("618fb5662b3aede13a81e993", "dev");
-  import_react_dom.default.render(/* @__PURE__ */ import_react4.default.createElement(import_react4.default.StrictMode, null, /* @__PURE__ */ import_react4.default.createElement(App, null)), document.getElementById("app"));
+  import_react_dom.default.render(/* @__PURE__ */ import_react5.default.createElement(import_react5.default.StrictMode, null, /* @__PURE__ */ import_react5.default.createElement(App, null)), document.getElementById("app"));
 })();
 /*
 object-assign
