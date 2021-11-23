@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+import { Backend } from "@staticbackend/js";
+
+declare global {
+	var bkn: Backend;
+}
+
 interface ITable {
 	id: string;
 	accountId: string;

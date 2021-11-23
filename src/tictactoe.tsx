@@ -53,6 +53,8 @@ export class TicTacToe extends Component<IProps, IState> {
 	}
 
 	componentDidMount = async () => {
+		// get all rooms waiting for oppononet
+
 		const filters = [
 			["waiting", "==", true]
 		];

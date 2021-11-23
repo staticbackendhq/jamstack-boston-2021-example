@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+import { Backend } from "@staticbackend/js";
+
+declare global {
+	var bkn: Backend;
+}
+
 
 export interface IProps {
 	onToken: (token: string) => void;
